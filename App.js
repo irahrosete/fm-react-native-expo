@@ -1,12 +1,15 @@
 import React from 'react'
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import Button from './Box'
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={[styles.container, styles.yellow]}>
-        <Text style={styles.text}>Hello, My Dragon 🐉!</Text>
-        <Text style={styles.text}>🥜</Text>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          Here are some boxes of different colours
+        </Text>
+        <Button />
       </View>
     </SafeAreaView>
   )
@@ -14,19 +17,12 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#a4c4e0',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-  safeArea: {
-    flex: 2,
+    marginTop: 100,
+    marginHorizontal: 25,
   },
   text: {
-    fontSize: 40,
-  },
-  yellow: {
-    backgroundColor: '#FDFD96',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 })
 
