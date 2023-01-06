@@ -1,12 +1,18 @@
 import React from 'react'
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import ColorBox from './components/ColorBox'
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={[styles.container, styles.yellow]}>
-        <Text style={styles.text}>Hello, My Dragon 🐉!</Text>
-        <Text style={styles.text}>🥜</Text>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          Here are some boxes of different colours
+        </Text>
+        <ColorBox colorName="Cyan" hexCode="#2aa198" />
+        <ColorBox colorName="Blue" hexCode="#268bd2" />
+        <ColorBox colorName="Magenta" hexCode="#d33682" />
+        <ColorBox colorName="Orange" hexCode="#cb4b16" />
       </View>
     </SafeAreaView>
   )
@@ -14,19 +20,12 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#a4c4e0',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-  safeArea: {
-    flex: 2,
+    marginTop: 100,
+    marginHorizontal: 25,
   },
   text: {
-    fontSize: 40,
-  },
-  yellow: {
-    backgroundColor: '#FDFD96',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 })
 
