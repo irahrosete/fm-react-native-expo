@@ -168,14 +168,16 @@ const ColorPaletteModal = ({ navigation }) => {
   const handleSubmit = useCallback(() => {
     if (!name) {
       Alert.alert('Please enter a palette name')
+    } else if (selectedColors.length < 3) {
+      Alert.alert('Please select at least three colors')
     } else {
       const newColorPalette = {
         paletteName: name,
-        colors: [],
+        colors: selectedColors,
       }
       navigation.navigate('Home', { newColorPalette })
     }
-  }, [name])
+  }, [name, selectedColors])
 
   const handleValueChange = useCallback((value, color) => {
     if (value === true) {

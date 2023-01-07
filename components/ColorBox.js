@@ -8,7 +8,7 @@ const ColorBox = ({ colorName, hexCode }) => {
 
   const textColor = {
     color:
-      parseInt(hexCode.replace('#', ''), 16) > 0xffffff / 1.1
+      parseInt(hexCode.replace('#', ''), 16) > 0xffffff / 1.2
         ? 'black'
         : 'white',
   }
