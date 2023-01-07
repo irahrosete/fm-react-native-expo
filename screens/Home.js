@@ -35,6 +35,12 @@ const Home = ({ navigation, route }) => {
     fetchColorPalettes()
   }, [])
 
+  useEffect(() => {
+    if (newColorPalette) {
+      setColorPalettes((palettes) => [newColorPalette, ...palettes])
+    }
+  }, [newColorPalette])
+
   return (
     <FlatList
       style={styles.list}
