@@ -163,6 +163,7 @@ const COLORS = [
 
 const ColorPaletteModal = ({ navigation }) => {
   const [name, setName] = useState('')
+  const [selectedColors, setSelectedColors] = useState([])
 
   const handleSubmit = useCallback(() => {
     if (!name) {
@@ -175,6 +176,18 @@ const ColorPaletteModal = ({ navigation }) => {
       navigation.navigate('Home', { newColorPalette })
     }
   }, [name])
+
+  const handleValueChange = useCallback((value, color) => {
+    if (value === true) {
+      setSelectedColors((colors) => [...colors, color])
+    } else {
+      setSelectedColors((colors) =>
+        colors.filter(
+          (selectedColor) => color.colorName !== selectedColor.colorName,
+        ),
+      )
+    }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -191,7 +204,16 @@ const ColorPaletteModal = ({ navigation }) => {
         renderItem={({ item }) => (
           <View style={styles.color}>
             <Text>{item.colorName}</Text>
-            <Switch value={true} onValueChange={() => { }} />
+            <Switch
+              value={
+                !!selectedColors.find(
+                  (color) => color.colorName === item.colorName,
+                )
+              }
+              onValueChange={(selected) => {
+                handleValueChange(selected, item)
+              }}
+            />
           </View>
         )}
       />
