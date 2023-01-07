@@ -1,13 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useCallback } from 'react'
 import { View, Text, TextInput, StyleSheet, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-const ColorPaletteModal = () => {
+const ColorPaletteModal = ({ navigation }) => {
   const [name, setName] = useState('')
 
   const handleSubmit = useCallback(() => {
     if (!name) {
       Alert.alert('Please enter a palette name')
+    } else {
+      const newColorPalette = {
+        name,
+        colors: [],
+      }
+      navigation.navigate('Home', { newColorPalette })
     }
   }, [name])
 

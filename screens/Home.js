@@ -4,7 +4,10 @@ import { FlatList, StyleSheet, RefreshControl, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import PalettePreview from '../components/PalettePreview'
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, route }) => {
+  const newColorPalette = route.params
+    ? route.params.newColorPalette
+    : undefined
   const [colorPalettes, setColorPalettes] = useState([])
 
   const [isRefreshing, setIsRefreshing] = useState(false)
