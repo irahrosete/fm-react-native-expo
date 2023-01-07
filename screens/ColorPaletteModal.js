@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import React, { useState, useCallback } from 'react'
+import { View, Text, TextInput, StyleSheet, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const ColorPaletteModal = () => {
   const [name, setName] = useState('')
+
+  const handleSubmit = useCallback(() => {
+    if (!name) {
+      Alert.alert('Please enter a palette name')
+    }
+  }, [name])
+
   return (
     <View style={styles.container}>
       <Text style={styles.name}>Name of the palette</Text>
@@ -13,7 +20,7 @@ const ColorPaletteModal = () => {
         onChangeText={setName}
         placeholder="Palette name"
       />
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
     </View>
