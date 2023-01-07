@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useCallback, useEffect } from 'react'
-import { FlatList, StyleSheet, RefreshControl } from 'react-native'
+import { FlatList, StyleSheet, RefreshControl, Text } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import PalettePreview from '../components/PalettePreview'
 
 const Home = ({ navigation }) => {
@@ -24,11 +26,11 @@ const Home = ({ navigation }) => {
       setIsRefreshing(false)
     }, 1000)
     setIsRefreshing(false)
-  }, [fetchColorPalettes])
+  }, [])
 
   useEffect(() => {
     fetchColorPalettes()
-  }, [fetchColorPalettes])
+  }, [])
 
   return (
     <FlatList
@@ -47,6 +49,15 @@ const Home = ({ navigation }) => {
       // onRefresh={() => {}}
       refreshControl={
         <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+      }
+      ListHeaderComponent={
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('ColorPaletteModal')
+          }}
+        >
+          <Text>Launch Modal</Text>
+        </TouchableOpacity>
       }
     />
   )
