@@ -16,7 +16,7 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     fetchColorPalettes()
-  }, [])
+  }, [fetchColorPalettes])
   return (
     <FlatList
       style={styles.list}
